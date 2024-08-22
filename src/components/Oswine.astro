@@ -1,0 +1,18 @@
+---
+import { Image } from "astro:assets";
+import portrait from "@assets/oswine.jpg";
+---
+
+<div
+  class="mx-auto flex items-center justify-center gap-3 sm:float-start sm:mr-4"
+>
+  <Image
+    src={portrait}
+    alt="Oswine Wenlock's portrait "
+    loading="eager"
+    class="size-16 overflow-hidden rounded-full outline outline-1 -outline-offset-1 outline-[var(--sl-color-gray-4)] sm:rounded"
+  />
+  <!-- <p class="text-xl">Oswine <br />Wenlock</p> -->
+</div>
+
+<slot />

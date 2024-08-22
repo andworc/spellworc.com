@@ -1,0 +1,76 @@
+---
+title: Worthying Europe's folktales
+template: splash
+hero:
+  tagline: Join us in gathering these wonderful yarns and weaving them into a new tapestry that honours and uplifts our heritage.
+  image:
+    light: ../../assets/bookplate.svg
+    dark: ../../assets/bookplate-ondark.svg
+    alt:
+      Spellworc's bookplate (Ex Libris) featuring a quill, flanked by to trees in the
+      style found on some Anglo-Saxon stone crosses, emblazoned with "Yrfeweard"
+      (erf-ward) in the Anglo-Saxon runic script
+  actions:
+    - text: Step inside
+      link: /getting-settled
+      icon: right-arrow
+      variant: primary
+    # - text: Read our blog 
+    #   link: https://blog.spellworc.com
+---
+
+import { CardGrid, LinkCard } from "@astrojs/starlight/components";
+import Statement from "@components/Statement.astro";
+import Footer from "@components/Footer.astro";
+import Card from "@components/Card.astro";
+import Icon from "@components/Icon.astro";
+import XLink from '@components/XLink.astro'
+import { links } from 'consts'
+
+<CardGrid stagger>
+  <Card title="Neawist" icon="paint-brush">
+    <Fragment slot="links">
+
+      <a href={links.youtube.spellworc} target="_blank">
+        <Icon set="brand" name="youtube" colour="#FF0000" size="1.5rem" />
+      </a>
+    </Fragment>
+    Akin to works like Tolkien's *Middle-earth*, *Neawist* is the setting where our mythopoeic (myth-making) endeavours come to fruition. Within in, we incorporate and build upon our folklore to craft a rich, engaging world.
+  </Card>
+
+  <Card title="Lorehouse" icon="book-open">
+    <Fragment slot="links">
+      <a href={links.youtube.lorehouse} target="_blank">
+        <Icon set="brand" name="youtube" colour="#FF0000" size="1.5rem" />
+      </a>
+    </Fragment>
+    To build upon our tradition, we must come to know and understand it. With Lorehouse – a library dedicated to preserving and sharing our folklore and tales – we set ourselves upon a firm foundation.
+  </Card>
+  
+  <Card title="Fellowship" icon="chat-bubble-left-right">
+    <Fragment slot="links">
+      <a href={links.discord.general} target="_blank">
+        <Icon set="brand" name="discord" colour="#5865f2" size="1.5rem" />
+      </a>
+      <a href={`mailto:${links.email.general}`}>
+        <Icon set="solid" name="envelope" size="1.5rem" />
+      </a>
+    </Fragment>
+    At its core, all the endeavours of *Spellworc* are designed with community in mind. Whatever the project, we strive to make our work collaborative and open, and we would be gladdened for you to join us on our <XLink href={links.discord.general}>Discord server</XLink>.
+  </Card>
+
+  {/* Change to blog/spellworcing */}
+  <Card title="Support" icon="heart">
+    <Fragment slot="links">
+      <a href={`mailto:${links.email.lorehouse}`}>
+        <Icon set="solid" name="envelope" size="1.5rem" />
+      </a>
+    </Fragment>
+    The best way to support our work is by sharing it with those who would find value in it. We also welcome those knowledgeable in our traditions to reach out and share what they know.
+  </Card>
+  
+</CardGrid>
+
+<Statement />
+
+<Footer />

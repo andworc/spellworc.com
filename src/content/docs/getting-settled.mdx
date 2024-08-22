@@ -1,0 +1,79 @@
+---
+title: Getting Settled
+---
+
+import { CardGrid, Aside } from "@astrojs/starlight/components";
+import Icon from '@components/Icon.astro'
+import XLink from '@components/XLink.astro'
+import LinkCard from '@components/LinkCard.astro'
+import { links } from 'consts'
+
+
+To head straight to our work:
+
+<CardGrid>
+<LinkCard
+  variant="primary"
+  title="Neawist"
+  description="Where we make our own contribution to our folklore tradition."
+  href="neawist"
+/>
+
+  <LinkCard
+    title="Lorehouse"
+    description="Where we collect and share faithful renditions of our folklore."
+    href="lorehouse"
+  />
+</CardGrid>
+
+## Getting involved
+
+Our hope is for this to evolve into a community endeavour, where we can come together to
+merrymake our shared heritage and contribute our particular knowledge to it.
+
+### Fellowship
+
+A fundamental aspect of our work here at Spellworc is the cherishment of
+community. Our efforts are rooted in honouring the worth of our kin and
+forefathers, which is inseparable from the spirit of fellowship. We would be
+delighted for all good men to engage with us through our <XLink href={links.discord.general}>Discord server</XLink> or by
+email at <a href={`mailto:${links.email.general}`}>{links.email.general}</a>.
+
+
+:::note[External links]
+  Links followed by <Icon set="mini" name="arrow-top-right-on-square" class="inline"/>
+  indicate a external link (a link to another website).
+:::
+
+{/* :::note[Comments]
+We intent to add comment & account functionality into the website, at some point in the
+future, but, at present, we are focusing on adding more content.
+::: */}
+
+### Contributing
+If you have folklore that would compliment our other work within Lorehouse,
+please reach out by email at <a
+href={`mailto:${links.email.lorehouse}`}>{links.email.lorehouse}</a>. For
+smaller suggestions, it is easiest to communicate through the <XLink href={links.discord.lorehouse}>Lorehouse Discord channel</XLink>.
+
+
+
+
+## Tips & tricks
+
+:::tip[Table of content]
+<Icon set="mini" name="device-phone-mobile" class="inline" /> On mobile, use the 
+  '**On this page**' button (at the top of the screen) to access the table of content.
+:::
+
+:::tip[This is an 'tip' aside]
+We use three other types of asides which serve to add additional, relevent information to 
+our articles:
+<Aside type="note" title="I'm used for notes"></Aside>
+<Aside type="caution" title="I'm used to caution"></Aside>
+<Aside type="danger" title="I'm used to warn"></Aside>
+:::
+
+
+
+

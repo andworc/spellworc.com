@@ -1,0 +1,30 @@
+{
+  "name": "spellworc.com",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.3",
+    "@astrojs/starlight": "^0.26.1",
+    "@astrojs/starlight-tailwind": "^2.0.3",
+    "@astrojs/tailwind": "^5.1.0",
+    "astro": "^4.14.4",
+    "astro-heroicons": "2.1.5-1",
+    "sharp": "^0.32.6",
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.5.4"
+  },
+  "devDependencies": {
+    "astro-vtbot": "^1.8.7",
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.6.6",
+    "vite-tsconfig-paths": "^5.0.1"
+  }
+}
