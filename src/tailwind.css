@@ -61,7 +61,7 @@
     mask: linear-gradient(215deg, black, transparent 50%);
   }
   .hero > img {
-    @apply sm:px-4 sl-wide:-mb-16 sl-wide:-mt-32;
+    @apply sm:px-8 sl-wide:-mb-16 sl-wide:-mt-32;
   }
 }
 
@@ -77,13 +77,6 @@
     background-size: 10rem;
     mask: linear-gradient(215deg, black, transparent 50%);
   }
-  .hero a.primary {
-    @apply !rounded-lg;
-  }
-  /* :global(.card-grid) > article {
-    border-radius: 1.123rem;
-    @apply !rounded-lg !bg-green-400;
-  } */
   .icon.inline {
     @apply -mb-0.5 inline-block;
   }
@@ -104,6 +97,6 @@
   @apply bg-[var(--sl-color-gray-7)];
 }
 
-.sl-markdown-content :not(h2) + :is(h2):not(:where(.not-content *)) {
+/* .sl-markdown-content :not(h2) + :is(h2):not(:where(.not-content *)) {
   @apply border-b pb-2;
-}
+} */

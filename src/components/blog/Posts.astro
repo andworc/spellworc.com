@@ -1,0 +1,75 @@
+---
+import { Markdown } from "astro-remote";
+
+import {
+  getBlogEntryExcerpt,
+  getBlogEntryMetadata,
+  type StarlightBlogEntry,
+} from "@libs/content";
+import { getPathWithBase } from "@libs/page";
+
+import Author from "./Author.astro";
+import Metadata from "./Metadata.astro";
+import Cover from "./Cover.astro";
+import Icon from "@components/Icon.astro";
+
+interface Props {
+  entries: StarlightBlogEntry[];
+}
+
+const { entries } = Astro.props;
+---
+
+<div class="posts">
+  {
+    entries.map(async (entry) => {
+      const Excerpt = await getBlogEntryExcerpt(entry);
+      const { authors } = getBlogEntryMetadata(entry);
+
+      const hasAuthors = authors.length > 0;
+
+      return (
+        <article class="preview mb-10 border-b pb-12 last:border-none">
+          <header>
+            {entry.data.cover && (
+              <Cover cover={entry.data.cover} class="aspect-[2/1]" />
+            )}
+            <h2 class="!mt-4 flex items-center gap-2">
+              {entry.data.featured && (
+                <span>
+                  <Icon
+                    set="solid"
+                    name="sparkles"
+                    size="1.5em"
+                    title="Featured post"
+                    class="size-7 fill-cyan-500 dark:fill-cyan-400"
+                  />
+                </span>
+              )}
+              <a class="!no-underline" href={getPathWithBase(`/${entry.slug}`)}>
+                {entry.data.title}
+              </a>
+            </h2>
+            <Metadata entry={entry} />
+          </header>
+          <div class="sl-markdown-content">
+            {typeof Excerpt === "string" ? (
+              <Markdown content={Excerpt} />
+            ) : (
+              <Excerpt />
+            )}
+          </div>
+          <footer class="flex flex-col items-center  sm:flex-row sm:gap-4">
+            {hasAuthors ? (
+              <div class="authors">
+                {authors.map((author) => (
+                  <Author {author} />
+                ))}
+              </div>
+            ) : null}
+          </footer>
+        </article>
+      );
+    })
+  }
+</div>

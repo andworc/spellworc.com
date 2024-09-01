@@ -1,0 +1,39 @@
+---
+import StarlightMarkdownContent from "@astrojs/starlight/components/MarkdownContent.astro";
+import type { Props } from "@astrojs/starlight/props";
+
+import Cover from "@components/blog/Cover.astro";
+import Metadata from "@components/blog/Metadata.astro";
+import { getBlogEntry, type StarlightBlogEntryPaginated } from "@libs/content";
+import { isAnyBlogPostPage } from "@libs/page";
+
+const isBlogPost = isAnyBlogPostPage(Astro.props.slug);
+let blogEntry: StarlightBlogEntryPaginated | undefined = undefined;
+
+if (isBlogPost) {
+  blogEntry = await getBlogEntry(Astro.props.slug);
+}
+---
+
+<StarlightMarkdownContent {...Astro.props}>
+  {
+    isBlogPost && blogEntry ? (
+      <>
+        {blogEntry.entry.data.cover && (
+          <Cover cover={blogEntry.entry.data.cover} />
+        )}
+        <Metadata entry={blogEntry.entry} showBadges={false} />
+      </>
+    ) : null
+  }
+  <slot />
+</StarlightMarkdownContent>
+
+<style>
+  .post-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-block-start: 2rem !important;
+  }
+</style>

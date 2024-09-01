@@ -49,7 +49,7 @@ switch (set) {
 }
 
 const svgTitle =
-  Astro.props.title !== undefined ? title : name.replaceAll("-", " ");
+  Astro.props.title !== undefined ? title : name.replaceAll("-", " ") + " icon";
 ---
 
 <svg
@@ -63,7 +63,7 @@ const svgTitle =
   ]}
   {viewBox}
   {...Astro.props}
-  set:html={`<title>${svgTitle} icon</title> ${icons[set][name]}`}
+  set:html={`<title>${svgTitle}</title> ${icons[set][name]}`}
 />
 
 <style define:vars={{ "sl-icon-color": colour, "sl-icon-size": size }}>

@@ -1,0 +1,90 @@
+---
+import { Badge } from "@astrojs/starlight/components";
+
+import { getBlogEntryMetadata, type StarlightBlogEntry } from "@libs/content";
+
+import Author from "./Author.astro";
+import Icon from "@components/Icon.astro";
+import PostTags from "./PostTags.astro";
+
+interface Props {
+  entry: StarlightBlogEntry;
+  showBadges?: boolean;
+}
+
+const { entry, showBadges = true } = Astro.props;
+const { authors, date, lastUpdated } = getBlogEntryMetadata(entry);
+
+const hasAuthors = authors.length > 0;
+---
+
+<div class="not-content">
+  <div class="mb-2 flex flex-col flex-wrap gap-x-6 gap-y-2 sm:flex-row">
+    <div class="dates | flex items-center gap-2">
+      <Icon name="clock" title="First published" />
+      <div class="flex flex-col">
+        <time datetime={entry.data.date.toISOString()}>
+          {date}
+        </time>
+        {
+          lastUpdated !== undefined &&
+          typeof entry.data.lastUpdated !== "boolean" &&
+          entry.data.lastUpdated?.toISOString() !==
+            entry.data.date.toISOString() ? (
+            <span class="update-date -mt-[0.25em]">
+              Updated:
+              <time datetime={entry.data.lastUpdated?.toISOString()}>
+                {lastUpdated}
+              </time>
+            </span>
+          ) : null
+        }
+      </div>
+    </div>
+
+    <PostTags entry={entry} />
+  </div>
+  {
+    hasAuthors && !showBadges ? (
+      <div class="authors">
+        {authors.map((author) => (
+          <Author {author} />
+        ))}
+      </div>
+    ) : null
+  }
+  {
+    showBadges && (entry.data?.draft || entry.data.featured) && (
+      <div class="badges">
+        {entry.data.draft && (
+          <Badge size="medium" text="Draft" variant="caution" />
+        )}
+        {/* {entry.data.featured && (
+          <Badge size="medium" text="Featured" variant="note" />
+        )} */}
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .dates {
+    font-size: var(--sl-text-sm);
+  }
+
+  .update-date {
+    color: var(--sl-color-gray-3);
+  }
+
+  .authors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+  }
+
+  .badges {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+</style>
